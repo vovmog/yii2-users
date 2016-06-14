@@ -1,9 +1,9 @@
 <?php
-namespace budyaga\users\models\forms;
+namespace vovmog\users\models\forms;
 
 use Yii;
 use yii\base\Model;
-use budyaga\users\models\User;
+use vovmog\users\models\User;
 
 /**
  * Login form

@@ -49,6 +49,7 @@ return [
     'LOGIN' => 'Вход',
 	'MIGRATION_ADMINISTRATOR' => 'Администратор',
 	'MIGRATION_MODERATOR' => 'Модератор',
+	'MIGRATION_USER' => 'Пользователь',
 	'MIGRATION_RBAC_MANAGE' => 'Управление структурой RBAC',
 	'MIGRATION_USER_CREATE' => 'Создание пользователей',
 	'MIGRATION_USER_DELETE' => 'Удаление пользователей',

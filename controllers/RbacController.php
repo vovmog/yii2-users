@@ -1,10 +1,10 @@
 <?php
 
-namespace budyaga\users\controllers;
+namespace vovmog\users\controllers;
 
-use budyaga\users\models\AuthItemSearch;
-use budyaga\users\models\AuthRuleSearch;
-use budyaga\users\models\forms\AssignmentForm;
+use vovmog\users\models\AuthItemSearch;
+use vovmog\users\models\AuthRuleSearch;
+use vovmog\users\models\forms\AssignmentForm;
 use Yii;
 use yii\rbac\Item;
 use yii\web\NotFoundHttpException;
@@ -35,6 +35,13 @@ class RbacController extends Controller
             ],
         ];
     }
+    public function init()
+    {
+        if ($this->module->customAdminLayout != '') {
+            $this->layout = $this->module->customAdminLayout;
+        }
+        parent::init();
+    }
 
     public function actionIndex()
     {
@@ -55,7 +62,7 @@ class RbacController extends Controller
 
     public function actionCreate($type = null)
     {
-        $className = 'budyaga\\users\\models\\' . $this->getModelName($type);
+        $className = 'vovmog\\users\\models\\' . $this->getModelName($type);
         $model = new $className;
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
@@ -86,7 +93,7 @@ class RbacController extends Controller
 
     public function actionUpdate($id, $type)
     {
-        $className = 'budyaga\\users\\models\\' . $this->getModelName($type);
+        $className = 'vovmog\\users\\models\\' . $this->getModelName($type);
         $model = $this->findModel($id, $className);
         $auth = Yii::$app->authManager;
 
@@ -131,7 +138,7 @@ class RbacController extends Controller
     public function actionChildren($id, $type)
     {
         $modelForm = new AssignmentForm;
-        $modelForm->model = $this->findModel($id, 'budyaga\\users\\models\\AuthItem');
+        $modelForm->model = $this->findModel($id, 'vovmog\\users\\models\\AuthItem');
         $modelForm->target = $this->findAuthEntity($id, $type);
 
         if ($modelForm->load(Yii::$app->request->post()) && $modelForm->save()) {

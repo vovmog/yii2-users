@@ -2,9 +2,9 @@
 
 use yii\db\Schema;
 use yii\db\Migration;
-use budyaga\users\models\User;
+use vovmog\users\models\User;
 use yii\rbac\Item;
-use budyaga\users\Module;
+use vovmog\users\Module;
 
 class m130524_201442_init extends Migration
 {
@@ -128,13 +128,14 @@ class m130524_201442_init extends Migration
         ]);
         $this->insert('{{%auth_rule}}', [
             'name' => 'noElderRank',
-            'data' => 'O:34:"budyaga\users\rbac\NoElderRankRule":3:{s:4:"name";s:11:"noElderRank";s:9:"createdAt";N;s:9:"updatedAt";i:1431880756;}',
+            'data' => 'O:33:"vovmog\users\rbac\NoElderRankRule":3:{s:4:"name";s:11:"noElderRank";s:9:"createdAt";N;s:9:"updatedAt";i:1431880756;}',
             'created_at' => time(),
             'updated_at' => time(),
         ]);
         $this->batchInsert('{{%auth_item}}', ['name', 'type', 'description', 'rule_name', 'created_at', 'updated_at'], [
             ['administrator', Item::TYPE_ROLE, Yii::t('users', 'MIGRATION_ADMINISTRATOR'), NULL, time(), time()],
             ['moderator', Item::TYPE_ROLE, Yii::t('users', 'MIGRATION_MODERATOR'), NULL, time(), time()],
+            ['user', Item::TYPE_ROLE, Yii::t('users', 'MIGRATION_USER'), NULL, time(), time()],
             ['rbacManage', Item::TYPE_PERMISSION, Yii::t('users', 'MIGRATION_RBAC_MANAGE'), NULL, time(), time()],
             ['userCreate', Item::TYPE_PERMISSION, Yii::t('users', 'MIGRATION_USER_CREATE'), NULL, time(), time()],
             ['userDelete', Item::TYPE_PERMISSION, Yii::t('users', 'MIGRATION_USER_DELETE'), NULL, time(), time()],
@@ -152,6 +153,7 @@ class m130524_201442_init extends Migration
             ['administrator', 'userUpdate'],
             ['administrator', 'moderator'],
             ['moderator', 'userManage'],
+            ['moderator', 'user'],
             ['moderator', 'userView'],
             ['moderator', 'userUpdateNoElderRank'],
             ['userUpdateNoElderRank', 'userUpdate'],

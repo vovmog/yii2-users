@@ -1,5 +1,5 @@
 <?php
-namespace budyaga\users\models\forms;
+namespace vovmog\users\models\forms;
 
 use Yii;
 use yii\base\Model;

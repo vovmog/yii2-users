@@ -1,12 +1,12 @@
 <?php
 
-namespace budyaga\users;
+namespace vovmog\users;
 
 use Yii;
 
 class Module extends \yii\base\Module
 {
-    public $controllerNamespace = 'budyaga\users\controllers';
+    public $controllerNamespace = 'vovmog\users\controllers';
 
     public $userPhotoUrl = '';
 
@@ -15,6 +15,12 @@ class Module extends \yii\base\Module
     public $customViews = [];
 
     public $customMailViews = [];
+
+    public $customLayout = '';
+
+
+    public $customAdminLayout = '';
+
 
     public function init()
     {
@@ -28,14 +34,15 @@ class Module extends \yii\base\Module
         if (!isset(Yii::$app->i18n->translations['users']) && !isset(Yii::$app->i18n->translations['users/*'])) {
             Yii::$app->i18n->translations['users'] = [
                 'class' => 'yii\i18n\PhpMessageSource',
-                'basePath' => '@budyaga/users/messages',
+                'basePath' => '@vovmog/users/messages',
                 'forceTranslation' => true,
                 'fileMap' => [
                     'users' => 'users.php'
                 ]
             ];
         }
-    }
+    } 
+    
 
     public function getCustomView($default)
     {
@@ -51,7 +58,7 @@ class Module extends \yii\base\Module
         if (isset($this->customMailViews[$default])) {
             return $this->customMailViews[$default];
         } else {
-            return '@budyaga/users/mail/' . $default;
+            return '@vovmog/users/mail/' . $default;
         }
     }
 }

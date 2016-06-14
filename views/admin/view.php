@@ -2,13 +2,13 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use budyaga\users\UsersAsset;
-use budyaga\users\models\User;
-use budyaga\users\components\UserPermissionsWidget;
-use budyaga\users\components\PermissionsTreeWidget;
+use vovmog\users\UsersAsset;
+use vovmog\users\models\User;
+use vovmog\users\components\UserPermissionsWidget;
+use vovmog\users\components\PermissionsTreeWidget;
 
 /* @var $this yii\web\View */
-/* @var $model budyaga\users\models\User */
+/* @var $model vovmog\users\models\User */
 
 $this->title = $model->username;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('users', 'USERS'), 'url' => ['index']];

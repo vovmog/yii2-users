@@ -2,14 +2,14 @@
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use budyaga\cropper\Widget;
-use budyaga\users\models\User;
-use budyaga\users\components\AuthKeysManager;
-use budyaga\users\UsersAsset;
+use vovmog\cropper\Widget;
+use vovmog\users\models\User;
+use vovmog\users\components\AuthKeysManager;
+use vovmog\users\UsersAsset;
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
-/* @var $model \budyaga\users\models\User */
+/* @var $model \vovmog\users\models\User */
 
 $this->title = Yii::t('users', 'PROFILE');
 $this->params['breadcrumbs'][] = $this->title;

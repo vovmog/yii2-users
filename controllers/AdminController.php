@@ -1,14 +1,14 @@
 <?php
 
-namespace budyaga\users\controllers;
+namespace vovmog\users\controllers;
 
 use Yii;
-use budyaga\users\models\User;
+use vovmog\users\models\User;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use budyaga\users\models\forms\AssignmentForm;
+use vovmog\users\models\forms\AssignmentForm;
 use yii\filters\AccessControl;
 
 /**
@@ -17,6 +17,15 @@ use yii\filters\AccessControl;
 class AdminController extends Controller
 {
     private $_model = false;
+
+
+    public function init()
+    {
+        if ($this->module->customAdminLayout != '') {
+            $this->layout = $this->module->customAdminLayout;
+        }
+        parent::init();
+    }
 
     public function behaviors()
     {

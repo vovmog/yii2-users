@@ -1,6 +1,6 @@
 <?php
 
-namespace budyaga\users;
+namespace vovmog\users;
 
 use yii\web\AssetBundle;
 
@@ -12,7 +12,7 @@ class UsersAsset extends AssetBundle
 	/**
 	 * @inheritdoc
 	 */
-	public $sourcePath = '@budyaga/users/assets';
+	public $sourcePath = '@vovmog/users/assets';
 
     public $js = [
         'js/users.js'

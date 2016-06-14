@@ -49,6 +49,7 @@ return [
     'LOGIN' => 'Login',
     'MIGRATION_ADMINISTRATOR' => 'Administrator',
     'MIGRATION_MODERATOR' => 'Moderator',
+    'MIGRATION_USER' => 'User',
     'MIGRATION_RBAC_MANAGE' => 'Management RBAC structure',
     'MIGRATION_USER_CREATE' => 'Creating users',
     'MIGRATION_USER_DELETE' => 'Deleting users',

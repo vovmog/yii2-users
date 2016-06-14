@@ -1,15 +1,15 @@
 <?php
 
-namespace budyaga\users\controllers;
+namespace vovmog\users\controllers;
 
-use budyaga\users\models\forms\ChangeEmailForm;
-use budyaga\users\models\forms\ChangePasswordForm;
-use budyaga\users\models\forms\RetryConfirmEmailForm;
-use budyaga\users\models\UserEmailConfirmToken;
-use budyaga\users\models\forms\LoginForm;
-use budyaga\users\models\forms\PasswordResetRequestForm;
-use budyaga\users\models\forms\ResetPasswordForm;
-use budyaga\users\models\forms\SignupForm;
+use vovmog\users\models\forms\ChangeEmailForm;
+use vovmog\users\models\forms\ChangePasswordForm;
+use vovmog\users\models\forms\RetryConfirmEmailForm;
+use vovmog\users\models\UserEmailConfirmToken;
+use vovmog\users\models\forms\LoginForm;
+use vovmog\users\models\forms\PasswordResetRequestForm;
+use vovmog\users\models\forms\ResetPasswordForm;
+use vovmog\users\models\forms\SignupForm;
 use Yii;
 use yii\helpers\Url;
 use yii\base\InvalidParamException;
@@ -21,7 +21,7 @@ class UserController extends \yii\web\Controller
     {
         return [
             'uploadPhoto' => [
-                'class' => 'budyaga\cropper\actions\UploadAction',
+                'class' => 'vovmog\cropper\actions\UploadAction',
                 'url' => Yii::$app->controller->module->userPhotoUrl,
                 'path' => Yii::$app->controller->module->userPhotoPath,
             ]
@@ -52,6 +52,7 @@ class UserController extends \yii\web\Controller
 
     public function actionSignup()
     {
+        if (!Yii::$app->user->isGuest) return $this->redirect(Url::toRoute('/'));
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
             $transaction = Yii::$app->db->beginTransaction();
@@ -64,8 +65,7 @@ class UserController extends \yii\web\Controller
                     Yii::$app->getSession()->setFlash('error', Yii::t('users', 'CAN_NOT_SEND_EMAIL_FOR_CONFIRMATION'));
                     $transaction->rollBack();
                 };
-            }
-            else {
+            } else {
                 Yii::$app->getSession()->setFlash('error', Yii::t('users', 'CAN_NOT_CREATE_NEW_USER'));
                 $transaction->rollBack();
             }
@@ -131,6 +131,8 @@ class UserController extends \yii\web\Controller
     public function actionProfile()
     {
         $model = Yii::$app->user->identity;
+        if (!$model) return $this->redirect(Url::toRoute('/user/user/login'));
+
         $changePasswordForm = new ChangePasswordForm;
         $changeEmailForm = new ChangeEmailForm;
 
@@ -174,6 +176,6 @@ class UserController extends \yii\web\Controller
             Yii::$app->getSession()->setFlash('error', Yii::t('users', 'CONFIRMATION_LINK_IS_WRONG'));
         }
 
-        return $this->redirect(Url::toRoute('/'));
+        return $this->redirect(Url::toRoute('/login'));
     }
 }

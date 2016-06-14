@@ -1,7 +1,8 @@
 <?php
 
-namespace budyaga\users\rbac;
+namespace vovmog\users\rbac;
 
+use yii\rbac\Item;
 use yii\rbac\Rule;
 use Yii;
 

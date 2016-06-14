@@ -1,6 +1,6 @@
 <?php
 
-namespace budyaga\users\models;
+namespace vovmog\users\models;
 
 use Yii;
 use yii\helpers\ArrayHelper;

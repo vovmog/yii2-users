@@ -1,8 +1,8 @@
 <?php
-namespace budyaga\users\models\forms;
+namespace vovmog\users\models\forms;
 
-use budyaga\users\models\User;
-use budyaga\users\models\UserPasswordResetToken;
+use vovmog\users\models\User;
+use vovmog\users\models\UserPasswordResetToken;
 use yii\base\Model;
 use Yii;
 
@@ -25,7 +25,7 @@ class PasswordResetRequestForm extends Model
             ['email', 'required'],
             ['email', 'email'],
             ['email', 'exist',
-                'targetClass' => '\budyaga\users\models\User',
+                'targetClass' => '\vovmog\users\models\User',
                 'filter' => ['status' => User::STATUS_ACTIVE],
                 'message' => Yii::t('users', 'USER_WITH_SUCH_EMAIL_NOT_EXISTS')
             ],

@@ -1,10 +1,10 @@
 <?php
-namespace budyaga\users\models\forms;
+namespace vovmog\users\models\forms;
 
-use budyaga\users\models;
+use vovmog\users\models;
 use yii\base\InvalidParamException;
 use yii\base\Model;
-use budyaga\users\models\UserPasswordResetToken;
+use vovmog\users\models\UserPasswordResetToken;
 use Yii;
 
 /**
@@ -16,7 +16,7 @@ class ResetPasswordForm extends Model
     public $password_repeat;
 
     /**
-     * @var \budyaga\users\models\UserPasswordResetToken
+     * @var \vovmog\users\models\UserPasswordResetToken
      */
     private $_token;
 

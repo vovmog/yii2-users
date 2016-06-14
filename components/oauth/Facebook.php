@@ -1,9 +1,9 @@
 <?php
 
-namespace budyaga\users\components\oauth;
+namespace vovmog\users\components\oauth;
 
-use budyaga\users\models\User;
-use budyaga\users\models\UserOauthKey;
+use vovmog\users\models\User;
+use vovmog\users\models\UserOauthKey;
 
 class Facebook extends \yii\authclient\clients\Facebook
 {

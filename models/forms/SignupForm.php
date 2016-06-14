@@ -1,7 +1,7 @@
 <?php
-namespace budyaga\users\models\forms;
+namespace vovmog\users\models\forms;
 
-use budyaga\users\models\User;
+use vovmog\users\models\User;
 use yii\base\Model;
 use Yii;
 
@@ -26,12 +26,12 @@ class SignupForm extends Model
             ['username', 'filter', 'filter' => 'trim'],
             ['username', 'required'],
             ['username', 'string', 'min' => 2, 'max' => 255],
-            ['username', 'unique', 'targetClass' => '\budyaga\users\models\User', 'message' => Yii::t('users', 'THIS_USERNAME_ALREADY_TAKEN')],
+            ['username', 'unique', 'targetClass' => '\vovmog\users\models\User', 'message' => Yii::t('users', 'THIS_USERNAME_ALREADY_TAKEN')],
 
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'required'],
             ['email', 'email'],
-            ['email', 'unique', 'targetClass' => '\budyaga\users\models\User', 'message' => Yii::t('users', 'THIS_EMAIL_ALREADY_TAKEN')],
+            ['email', 'unique', 'targetClass' => '\vovmog\users\models\User', 'message' => Yii::t('users', 'THIS_EMAIL_ALREADY_TAKEN')],
             ['sex', 'in', 'range' => [User::SEX_MALE, User::SEX_FEMALE]],
             ['photo', 'safe'],
 
